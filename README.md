@@ -65,3 +65,29 @@ in
 ```
 
 </details>
+
+<details>
+
+  <summary>Playoff Match Query</summary>
+
+  # Playoff Match Query
+
+  ```
+let
+    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/FRC-Scouting-Data/GreenWood2023-Cheesy-Arena-Data/main/Playoff-Match-Schedule.csv"),[Delimiter=",", Columns=15, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Match", type text}, {"Type", type text}, {"Time", type text}, {"Red1", Int64.Type}, {"Red1IsSurrogate", type logical}, {"Red2", Int64.Type}, {"Red2IsSurrogate", type logical}, {"Red3", Int64.Type}, {"Red3IsSurrogate", type logical}, {"Blue1", Int64.Type}, {"Blue1IsSurrogate", type logical}, {"Blue2", Int64.Type}, {"Blue2IsSurrogate", type logical}, {"Blue3", Int64.Type}, {"Blue3IsSurrogate", type logical}}),
+    #"Reordered Columns" = Table.ReorderColumns(#"Changed Type",{"Type", "Match", "Time", "Red1", "Red1IsSurrogate", "Red2", "Red2IsSurrogate", "Red3", "Red3IsSurrogate", "Blue1", "Blue1IsSurrogate", "Blue2", "Blue2IsSurrogate", "Blue3", "Blue3IsSurrogate"}),
+    #"Removed all the Surrogate Columns" = Table.RemoveColumns(#"Reordered Columns",{"Red1IsSurrogate", "Red2IsSurrogate", "Red3IsSurrogate", "Blue1IsSurrogate", "Blue2IsSurrogate", "Blue3IsSurrogate"}),
+    #"Duplicated Time Column" = Table.DuplicateColumn(#"Removed all the Surrogate Columns", "Time", "Time - Copy"),
+    #"Reordered Time Columns1" = Table.ReorderColumns(#"Duplicated Time Column",{"Type", "Match", "Time", "Time - Copy", "Red1", "Red2", "Red3", "Blue1", "Blue2", "Blue3"}),
+    #"Extracted Date" = Table.TransformColumns(#"Reordered Time Columns1", {{"Time", each Text.Start(_, 10), type text}}),
+    #"Renamed Columns" = Table.RenameColumns(#"Extracted Date",{{"Time", "Date"}, {"Time - Copy", "Time"}}),
+    #"Extracted Time" = Table.TransformColumns(#"Renamed Columns", {{"Time", each Text.BetweenDelimiters(_, " ", " "), type text}}),
+    #"Changed To Date & Time Format" = Table.TransformColumnTypes(#"Extracted Time",{{"Time", type time}, {"Date", type date}}),
+    #"Merged Date & Time Column" = Table.CombineColumns(Table.TransformColumnTypes(#"Changed To Date & Time Format", {{"Date", type text}, {"Time", type text}}, "en-US"),{"Date", "Time"},Combiner.CombineTextByDelimiter(" ", QuoteStyle.None),"Date/Time"),
+    #"Changed To Date/Time" = Table.TransformColumnTypes(#"Merged Date & Time Column",{{"Date/Time", type datetime}})
+in
+    #"Changed To Date/Time"
+```
+</details>
