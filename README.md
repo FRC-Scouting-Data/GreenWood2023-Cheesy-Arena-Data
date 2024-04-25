@@ -91,3 +91,26 @@ in
     #"Changed To Date/Time"
 ```
 </details>
+
+<details>
+
+  <summary>Standings Query</summary>
+
+  # Standings Query
+
+  ```
+let
+    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/FRC-Scouting-Data/GreenWood2023-Cheesy-Arena-Data/main/Standings.csv"),[Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Rank", Int64.Type}, {"TeamId", Int64.Type}, {"RankingPoints", Int64.Type}, {"MatchPoints", Int64.Type}, {"ChargeStationPoints", Int64.Type}, {"AutoPoints", Int64.Type}, {"Wins", Int64.Type}, {"Losses", Int64.Type}, {"Ties", Int64.Type}, {"Disqualifications", Int64.Type}, {"Played", Int64.Type}}),
+    #"Renamed to Team Number" = Table.RenameColumns(#"Changed Type",{{"TeamId", "Team Number"}, {"RankingPoints", "Rank Points"}}),
+    #"Renamed Columns" = Table.RenameColumns(#"Renamed to Team Number",{{"Played", "Matches Played"}}),
+    #"Duplicated Column" = Table.DuplicateColumn(#"Renamed Columns", "Wins", "Wins - Copy"),
+    #"Duplicated Column1" = Table.DuplicateColumn(#"Duplicated Column", "Losses", "Losses - Copy"),
+    #"Duplicated Column2" = Table.DuplicateColumn(#"Duplicated Column1", "Ties", "Ties - Copy"),
+    #"Merged Columns" = Table.CombineColumns(Table.TransformColumnTypes(#"Duplicated Column2", {{"Wins - Copy", type text}, {"Losses - Copy", type text}, {"Ties - Copy", type text}}, "en-US"),{"Wins - Copy", "Losses - Copy", "Ties - Copy"},Combiner.CombineTextByDelimiter("/", QuoteStyle.None),"W/L/T"),
+    #"Reordered Columns" = Table.ReorderColumns(#"Merged Columns",{"Rank", "Team Number", "Matches Played", "Rank Points", "MatchPoints", "ChargeStationPoints", "AutoPoints", "Wins", "Losses", "Ties", "Disqualifications", "W/L/T"})
+in
+    #"Reordered Columns"
+```
+</details>
