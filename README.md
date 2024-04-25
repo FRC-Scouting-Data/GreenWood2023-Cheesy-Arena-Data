@@ -1,28 +1,51 @@
 # GreenWood2023-Cheesy-Arena-Data
 
+<details>
+
+  <summary>Backup Teams</summary>
+  
 ## Backup Teams CSV Web API
 
 ```
 https://raw.githubusercontent.com/FRC-Scouting-Data/GreenWood2023-Cheesy-Arena-Data/main/Backup-Teams.csv
 ```
+</details>
 
+<details>
+
+  <summary>FTA Report</summary>
+  
 ## FTA Report CSV Web API
 
 ```
 https://raw.githubusercontent.com/FRC-Scouting-Data/GreenWood2023-Cheesy-Arena-Data/main/FTA-Report.csv
 ```
 
+</details>
+
+<details>
+
+  <summary>Playoff-Match-Schedule</summary>
+  
 ## Playoff-Match-Schedule CSV Web API
 
 ```
 https://raw.githubusercontent.com/FRC-Scouting-Data/GreenWood2023-Cheesy-Arena-Data/main/Playoff-Match-Schedule.csv
 ```
 
+</details>
+
+<details>
+
+  <summary> Qualification Match Schedule</summary>
+  
 ## Qualification Match Schedule CSV Web API
 
 ```
 https://raw.githubusercontent.com/FRC-Scouting-Data/GreenWood2023-Cheesy-Arena-Data/main/Qualification-Match-Schedule.csv
 ```
+
+</details>
 
 ## Standings CSV Web API
 
