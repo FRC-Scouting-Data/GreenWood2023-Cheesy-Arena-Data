@@ -1,0 +1,17 @@
+Match,Type,Time,Red1,Red1IsSurrogate,Red2,Red2IsSurrogate,Red3,Red3IsSurrogate,Blue1,Blue1IsSurrogate,Blue2,Blue2IsSurrogate,Blue3,Blue3IsSurrogate
+M1,Playoff,2024-04-25 13:00:00 -0400 EDT,234,false,3940,false,3890,false,135,false,1720,false,4485,false
+M2,Playoff,2024-04-25 13:09:00 -0400 EDT,5484,false,7657,false,4580,false,3494,false,7454,false,8564,false
+M3,Playoff,2024-04-25 13:18:00 -0400 EDT,5188,false,1501,false,1555,false,7617,false,45,false,6721,false
+M4,Playoff,2024-04-25 13:27:00 -0400 EDT,829,false,71,false,447,false,3176,false,1741,false,3947,false
+M5,Playoff,2024-04-25 13:36:00 -0400 EDT,0,false,0,false,0,false,0,false,0,false,0,false
+M6,Playoff,2024-04-25 13:45:00 -0400 EDT,0,false,0,false,0,false,0,false,0,false,0,false
+M7,Playoff,2024-04-25 13:54:00 -0400 EDT,0,false,0,false,0,false,0,false,0,false,0,false
+M8,Playoff,2024-04-25 14:03:00 -0400 EDT,0,false,0,false,0,false,0,false,0,false,0,false
+M9,Playoff,2024-04-25 14:12:00 -0400 EDT,0,false,0,false,0,false,0,false,0,false,0,false
+M10,Playoff,2024-04-25 14:21:00 -0400 EDT,0,false,0,false,0,false,0,false,0,false,0,false
+M11,Playoff,2024-04-25 14:31:00 -0400 EDT,0,false,0,false,0,false,0,false,0,false,0,false
+M12,Playoff,2024-04-25 14:40:00 -0400 EDT,0,false,0,false,0,false,0,false,0,false,0,false
+M13,Playoff,2024-04-25 15:00:00 -0400 EDT,0,false,0,false,0,false,0,false,0,false,0,false
+F1,Playoff,2024-04-25 15:20:00 -0400 EDT,0,false,0,false,0,false,0,false,0,false,0,false
+F2,Playoff,2024-04-25 15:40:00 -0400 EDT,0,false,0,false,0,false,0,false,0,false,0,false
+F3,Playoff,2024-04-25 16:00:00 -0400 EDT,0,false,0,false,0,false,0,false,0,false,0,false
